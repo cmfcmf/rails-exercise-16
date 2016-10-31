@@ -26,4 +26,14 @@ describe "Author creation page", :type => :feature do
     visit '/authors/new'
     expect(page.find_button("Create Author").value).to eq("Create Author")
   end
+
+  it "should create new author instances" do
+    visit '/authors/new'
+    fill_in('First name', with: 'Alan')
+    fill_in('Last name', with: 'Turing')
+    fill_in('Homepage', with: 'http://wikipedia.org/Alan_Turing')
+    click_button('Create Author')
+
+    expect(Author.where(first_name: 'Alan', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing')).to exist
+  end
 end
