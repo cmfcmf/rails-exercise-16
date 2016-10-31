@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 describe "Author display page", :type => :feature do
-  it "should display the author's first name" do
+  it "should display the author's details" do
     author = create(:author)
 
     visit '/authors/1'
 
     expect(page).to have_text(author.first_name)
+    expect(page).to have_text(author.last_name)
+    expect(page).to have_text(author.homepage)
   end
 end
 
