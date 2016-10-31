@@ -11,7 +11,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    render plain: ''
+    @author = Author.find(params[:id])
   end
 
   private
