@@ -17,6 +17,8 @@ describe "Author index page", :type => :feature do
     visit '/authors'
 
     expect(page).to have_text('Authors')
+
+    expect(find_link('Add author')).to have_text('Add author')
   end
 
   it "should display all authors" do
