@@ -32,10 +32,19 @@ describe "Author index page", :type => :feature do
 end
 
 describe "Author creation page", :type => :feature do
-
   it "should display 'New author'" do
     visit '/authors/new'
     expect(page).to have_text("New author")
+  end
+
+  it "should display validation errors" do
+    visit '/authors/new'
+
+    fill_in('First name', with: 'Alan')
+    fill_in('Homepage', with: 'http://wikipedia.org/Alan_Turing')
+    click_button('Create Author')
+
+    expect(page).to have_text("Last name can't be blank")
   end
 
   it "should have a 'first name' field" do
