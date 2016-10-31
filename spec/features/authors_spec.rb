@@ -21,4 +21,9 @@ describe "Author creation page", :type => :feature do
     visit '/authors/new'
     expect(page).to have_text("Homepage")
   end
+
+  it "should have a submit button" do
+    visit '/authors/new'
+    expect(page).to have_text("Create author")
+  end
 end
