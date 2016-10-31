@@ -18,6 +18,15 @@ describe "Author index page", :type => :feature do
 
     expect(page).to have_text('Authors')
   end
+
+  it "should display all authors" do
+    create(:author)
+
+    visit '/authors'
+
+    expect(page).to have_text('Alan Turing')
+    expect(page).to have_text('http://wikipedia.de/Alan_Turing')
+  end
 end
 
 describe "Author creation page", :type => :feature do
