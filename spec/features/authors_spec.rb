@@ -12,6 +12,18 @@ describe "Author display page", :type => :feature do
   end
 end
 
+describe "Author edit page", :type => :feature do
+  it "should display the author's details" do
+    author = create(:author)
+
+    visit '/authors/1/edit'
+
+    expect(find_field('First name').value).to eq(author.first_name)
+    expect(find_field('Last name').value).to eq(author.last_name)
+    expect(find_field('Homepage').value).to eq(author.homepage)
+  end
+end
+
 describe "Author index page", :type => :feature do
   it "should render" do
     visit '/authors'
