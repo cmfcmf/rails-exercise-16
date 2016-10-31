@@ -1,5 +1,15 @@
 require 'rails_helper'
 
+describe "Author display page", :type => :feature do
+  it "should display the author's first name" do
+    author = create(:author)
+
+    visit '/authors/1'
+
+    expect(page).to have_text(author.first_name)
+  end
+end
+
 describe "Author creation page", :type => :feature do
 
   it "should display 'New author'" do
