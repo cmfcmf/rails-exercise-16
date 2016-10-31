@@ -12,6 +12,14 @@ describe "Author display page", :type => :feature do
   end
 end
 
+describe "Author index page", :type => :feature do
+  it "should render" do
+    visit '/authors'
+
+    expect(page).to have_text('Authors')
+  end
+end
+
 describe "Author creation page", :type => :feature do
 
   it "should display 'New author'" do
