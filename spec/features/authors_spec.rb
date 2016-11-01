@@ -53,6 +53,9 @@ describe "Author index page", :type => :feature do
 
     expect(page).to have_text('Alan Turing')
     expect(page).to have_text('http://wikipedia.de/Alan_Turing')
+
+    expect(find_link('Show')).to have_text('Show') # TODO: Check if link points to correct show page
+    expect(find_link('Edit')).to have_text('Edit') # TODO: Check if link points to correct edit page
   end
 end
 
