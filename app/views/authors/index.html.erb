@@ -13,7 +13,7 @@
       <td><%= link_to author.homepage, author.homepage %></td>
       <td><%= link_to 'Show', author_path(author) %></td>
       <td><%= link_to 'Edit', edit_author_path(author) %></td>
-      <td><%= link_to 'Destroy', 'TODO' %></td>
+      <td><%= link_to 'Destroy', author_path(author), method: :delete %></td>
     </tr>
   <% end %>
 </table>

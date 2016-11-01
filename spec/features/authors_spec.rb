@@ -56,6 +56,12 @@ describe "Author index page", :type => :feature do
     expect(find_link('Add author')).to have_text('Add author')
   end
 
+  it "should be able to delete an author" do
+    create(:author)
+
+    visit '/authors/1/'
+  end
+
   it "should display all authors" do
     create(:author)
 
