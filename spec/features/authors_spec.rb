@@ -35,6 +35,16 @@ describe "Author edit page", :type => :feature do
 
     expect(page).to have_text('Mathison')
   end
+  it "should display validation errors" do
+    author = create(:author)
+
+    visit '/authors/1/edit'
+
+    fill_in('Last name', with: '')
+    click_button('Update Author')
+
+    expect(page).to have_text("Last name can't be blank")
+  end
 end
 
 describe "Author index page", :type => :feature do
