@@ -22,6 +22,19 @@ describe "Author edit page", :type => :feature do
     expect(find_field('Last name').value).to eq(author.last_name)
     expect(find_field('Homepage').value).to eq(author.homepage)
   end
+  it "should update the author's last name" do
+    author = create(:author)
+
+    visit '/authors/1/edit'
+
+    expect(find_field('Last name').value).to eq(author.last_name)
+    fill_in('Last name', with: 'Mathison')
+    click_button('Update Author')
+
+    visit '/authors/1'
+
+    expect(page).to have_text('Alan Mathison')
+  end
 end
 
 describe "Author index page", :type => :feature do
