@@ -33,7 +33,7 @@ describe "Author edit page", :type => :feature do
 
     visit '/authors/1'
 
-    expect(page).to have_text('Alan Mathison')
+    expect(page).to have_text('Mathison')
   end
 end
 
