@@ -56,6 +56,7 @@ describe "Author index page", :type => :feature do
 
     expect(find_link('Show')).to have_text('Show') # TODO: Check if link points to correct show page
     expect(find_link('Edit')).to have_text('Edit') # TODO: Check if link points to correct edit page
+    expect(find_link('Destroy')).to have_text('Destroy') # TODO: Check if link points to correct destroy page
   end
 end
 
