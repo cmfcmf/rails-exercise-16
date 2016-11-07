@@ -6,13 +6,15 @@ class PapersController < ApplicationController
   def create
     @paper = Paper.new(paper_params)
 
-    @paper.author = Author.all().first # TODO Use author from form.
-
     if @paper.save
-      redirect_to @paper.author
+      redirect_to @paper
     else
       render 'new'
     end
+  end
+
+  def show
+    @paper = Paper.find(params[:id])
   end
 
   private
