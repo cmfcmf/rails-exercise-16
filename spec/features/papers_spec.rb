@@ -12,6 +12,30 @@ describe "Paper display page", :type => :feature do
   end
 end
 
+describe "Paper index page", :type => :feature do
+  it "should render" do
+    visit '/papers'
+
+    expect(page).to have_text('Papers')
+
+    expect(find_link('Add paper')).to have_text('Add paper')
+  end
+
+  it "should display all papers" do
+    paper = create(:paper)
+
+    visit '/papers'
+
+    expect(page).to have_text(paper.title)
+    expect(page).to have_text(paper.year)
+    expect(page).to have_text(paper.venue)
+
+    expect(find_link('Show')).to have_text('Show') # TODO: Check if link points to correct show page
+    expect(find_link('Edit')).to have_text('Edit') # TODO: Check if link points to correct edit page
+    expect(find_link('Destroy')).to have_text('Destroy') # TODO: Check if link points to correct destroy page
+  end
+end
+
 describe "Paper creation page", :type => :feature do
   it "should display 'New paper'" do
     visit '/papers/new'

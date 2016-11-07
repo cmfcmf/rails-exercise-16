@@ -1,4 +1,8 @@
 class PapersController < ApplicationController
+  def index
+    @papers = Paper.all
+  end
+
   def new
     @paper = Paper.new
   end
