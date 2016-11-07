@@ -1,5 +1,5 @@
 <h1>Edit paper</h1>
-<%= form_for :paper, url: papers_path do |f| %>
+<%= form_for :paper, url: paper_path(@paper), method: :patch do |f| %>
      <% if @paper.errors.any? %>
       <div id="error_explanation">
         <h2>
