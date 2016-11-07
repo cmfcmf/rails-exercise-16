@@ -28,5 +28,17 @@ RSpec.describe Paper, type: :model do
         paper.save!
       }.to_not raise_error(ActiveRecord::RecordInvalid)
     end
+
+    it "only allows integer years" do
+      paper = Paper.new(:title => "My Paper", :venue => "HPI", :year => "123 abc")
+      expect {
+        paper.save!
+      }.to raise_error(ActiveRecord::RecordInvalid)
+
+      paper = Paper.new(:title => "My Paper", :venue => "HPI", :year => 2016)
+      expect {
+        paper.save!
+      }.to_not raise_error(ActiveRecord::RecordInvalid)
+    end
   end
 end
