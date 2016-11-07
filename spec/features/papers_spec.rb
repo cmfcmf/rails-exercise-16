@@ -1,5 +1,17 @@
 require 'rails_helper'
 
+describe "Paper display page", :type => :feature do
+  it "should display the papers's details" do
+    paper = create(:paper)
+
+    visit '/papers/1'
+
+    expect(page).to have_text(paper.title)
+    expect(page).to have_text(paper.venue)
+    expect(page).to have_text(paper.year)
+  end
+end
+
 describe "Paper creation page", :type => :feature do
   it "should display 'New paper'" do
     visit '/papers/new'

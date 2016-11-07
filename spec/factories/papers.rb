@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :paper do
-    title "MyString"
-    venue "MyString"
-    year 1
+    title "COMPUTING MACHINERY AND INTELLIGENCE"
+    venue "HPI"
+    year 2016
     author nil
   end
 end
