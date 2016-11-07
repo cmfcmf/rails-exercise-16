@@ -1,0 +1,31 @@
+<h1>Edit paper</h1>
+<%= form_for :paper, url: papers_path do |f| %>
+     <% if @paper.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@paper.errors.count, "error") %> prohibited this paper from being saved:
+        </h2>
+        <ul>
+          <% @paper.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :venue %><br>
+      <%= f.text_field :venue %>
+    </p>
+    <p>
+      <%= f.label :year %><br>
+      <%= f.text_field :year %>
+    </p>
+    <p>
+      <%= f.submit "Update Paper" %>
+    </p>
+<% end %>

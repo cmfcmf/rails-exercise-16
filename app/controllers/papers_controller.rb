@@ -17,6 +17,19 @@ class PapersController < ApplicationController
     end
   end
 
+  def edit
+    @paper = Paper.find(params[:id])
+  end
+
+  def update
+    @paper = Paper.find(params[:id])
+    if @paper.update(paper_params)
+      redirect_to @paper
+    else
+      render 'edit'
+    end
+  end
+
   def show
     @paper = Paper.find(params[:id])
   end

@@ -80,3 +80,38 @@ describe "Paper creation page", :type => :feature do
     expect(Paper.where(title: 'My Paper', venue: 'HPI', year: 2016)).to exist
   end
 end
+
+describe "Paper edit page", :type => :feature do
+  it "should display the paper's details" do
+    paper = create(:paper)
+
+    visit '/papers/1/edit'
+
+    expect(find_field('Title').value).to eq(paper.title)
+    expect(find_field('Venue').value).to eq(paper.venue)
+    expect(find_field('Year').value).to eq(paper.year.to_s)
+  end
+  it "should update the paper's title" do
+    paper = create(:paper)
+
+    visit '/papers/1/edit'
+
+    expect(find_field('Title').value).to eq(paper.title)
+    fill_in('Title', with: 'My Paper')
+    click_button('Update Paper')
+
+    visit '/papers/1'
+
+    expect(page).to have_text('My Paper')
+  end
+  it "should display validation errors" do
+    paper = create(:paper)
+
+    visit '/papers/1/edit'
+
+    fill_in('Title', with: '')
+    click_button('Update Paper')
+
+    expect(page).to have_text("Title can't be blank")
+  end
+end
