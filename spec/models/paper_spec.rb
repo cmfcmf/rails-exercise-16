@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Paper, type: :model do
   context "with no papers" do
+    it "has an empty list of authors" do
+      paper = Paper.new
+
+      expect(paper.authors).to be_empty
+    end
     it "requires title, venue, year" do
       paper = Paper.new
       expect {

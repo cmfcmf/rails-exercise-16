@@ -9,6 +9,11 @@ RSpec.describe Author, type: :model do
     end
   end
   context "with no authors" do
+    it "has an empty list of papers" do
+      author = Author.new
+
+      expect(author.papers).to be_empty
+    end
     it "requires first and last name" do
       author = Author.new
       expect {

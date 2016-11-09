@@ -3,6 +3,6 @@ FactoryGirl.define do
     title "COMPUTING MACHINERY AND INTELLIGENCE"
     venue "HPI"
     year 2016
-    author nil
+    authors []
   end
 end
