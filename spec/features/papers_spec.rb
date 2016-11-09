@@ -10,6 +10,15 @@ describe "Paper display page", :type => :feature do
     expect(page).to have_text(paper.venue)
     expect(page).to have_text(paper.year)
   end
+  it "should display the papers's authors" do
+    paper = create(:paper_with_author)
+
+    visit '/papers/1'
+
+    for author in paper.authors do
+      expect(page).to have_text(author.first_name + " " + author.last_name)
+    end
+  end
 end
 
 describe "Paper index page", :type => :feature do
