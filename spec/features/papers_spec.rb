@@ -16,7 +16,7 @@ describe "Paper display page", :type => :feature do
     visit '/papers/1'
 
     for author in paper.authors do
-      expect(page).to have_text(author.first_name + " " + author.last_name)
+      expect(page).to have_text(author.name)
     end
   end
 end
