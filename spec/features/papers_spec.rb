@@ -91,6 +91,15 @@ describe "Paper creation page", :type => :feature do
 end
 
 describe "Paper edit page", :type => :feature do
+  it "should have five author dropdown lists" do
+    paper = create(:paper)
+
+    visit '/papers/1/edit'
+
+    1.upto(5) do |i|
+      expect(page).to have_text("Author " + i.to_s)
+    end
+  end
   it "should display the paper's details" do
     paper = create(:paper)
 
