@@ -30,6 +30,21 @@ describe "Paper index page", :type => :feature do
     expect(find_link('Add paper')).to have_text('Add paper')
   end
 
+  it "should filter by year" do
+    create(:paper, year: 1950)
+    create(:paper, year: 1968)
+
+    visit '/papers'
+
+    expect(page).to have_text('1950')
+    expect(page).to have_text('1968')
+
+    visit '/papers?year=1950'
+
+    expect(page).to have_text('1950')
+    expect(page).to_not have_text('1968')
+  end
+
   it "should display all papers" do
     paper = create(:paper)
 
