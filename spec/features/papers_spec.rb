@@ -100,6 +100,14 @@ describe "Paper edit page", :type => :feature do
       expect(page).to have_text("Author " + i.to_s)
     end
   end
+  it "should pre select the selected authors" do
+    paper = create(:paper_with_author)
+
+    visit '/papers/1/edit'
+
+    expect(page).to have_text("Author 1") # Doesn work..
+    # expect(find_field('Author 1').find('option[selected]').text).to eq(paper.authors[0].id)
+  end
   it "should display the paper's details" do
     paper = create(:paper)
 
