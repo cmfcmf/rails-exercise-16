@@ -25,9 +25,9 @@
       <%= f.label :year %><br>
       <%= f.text_field :year %>
     </p>
-    <% 1.upto(5) do |i| %>
+    <% 5.times do |i| %>
       <p>
-        <%= f.label "Author " + i.to_s, for: "paper_author_id_" + i.to_s %><br>
+        <%= f.label "Author " + (i + 1).to_s, for: "paper_author_id_" + i.to_s %><br>
         <%= f.collection_select :author_ids, Author.all, :id, :name, {selected: @paper.author_ids[i], include_blank: '(none)'}, {name: "paper[author_ids][]", id: "paper_author_id_" + i.to_s} %>
       </p>
     <% end %>
